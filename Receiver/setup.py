@@ -3,7 +3,7 @@ I vari KEYCODE abbinati ad ogni tasto della tastiera:
 http://win32com.goermezer.de/content/view/136/284/
 oppure direttamente dal sito di microsoft: http://msdn.microsoft.com/en-us/library/8c6yea83
 '''
- 
+ #prova branca
 import serial, sys
 import win32com.client  
 import win32api
