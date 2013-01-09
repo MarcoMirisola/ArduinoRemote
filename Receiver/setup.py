@@ -3,26 +3,56 @@ I vari KEYCODE abbinati ad ogni tasto della tastiera:
 http://win32com.goermezer.de/content/view/136/284/
 oppure direttamente dal sito di microsoft: http://msdn.microsoft.com/en-us/library/8c6yea83
 '''
- #prova branca
 import serial, sys
-import win32com.client  
-import win32api
-import py2exe
-import win32gui
+#import win32com.client  
+#import win32api
+#import py2exe
+#import win32gui
  
  
 #LETTURA DEI DATI DA SERIALE:
  
- 
-SERIALPORT = raw_input("Inserire la porta seriale a cui e' connesso il dispositivo: ")
+MENU = int(raw_input("1)Crea comandi\n2)Usa telecomando: "))
+while ((MENU != 1) and (MENU	 !=2)):
+	print 'Wrong language!'
+	MENU = int(raw_input("1)Crea comandi\n2)Usa telecomando: "))
+
+#SERIALPORT = raw_input("Inserire la porta seriale a cui e' connesso il dispositivo: ")
+
+SERIALPORT = '/dev/tty.usbmodemfd121'
+
+if MENU == 1:
+	print 'CREA'
+
+else:
+	print 'USA'
+	
+#SERIALPORT = raw_input("Inserire la porta seriale a cui e' connesso il dispositivo: ")
 # Set up serial port
 try:
 	ser = serial.Serial(SERIALPORT, 9600) #inizializziamo la connessione e settiamo la porta con frequenza a 9600
-	shell = win32com.client.Dispatch("WScript.Shell") #istruzione per poter interagire col sistema operativo.
+	##shell = win32com.client.Dispatch("WScript.Shell") #istruzione per poter interagire col sistema operativo.
 
 except serial.SerialException:
 	print "no device connected - exiting\n"
 	sys.exit()
+ 
+#FUNZIONE CREAZIONE COMANDI:
+
+def create_command():
+	print "Premi i pulsanti del telecomando\n"
+	print "Play\n"
+ 	play = ser.readline()
+  	print play
+	
+	print "Volume Up\n"
+	up = ser.readline()
+  	print up
+  	
+	print "Volume Down\n"
+	down = ser.readline()
+  	print down
+ 
  
 #FUNZIONI PER IL CONTROLLO DI VLC:
  
